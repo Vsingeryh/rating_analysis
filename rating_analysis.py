@@ -90,7 +90,10 @@ def roc_pic(f_mat,user_count,mat_rat,mat_dislike,num = 50):
                 fprs[user] = 0 #There are some users do not have unfavoraable movie
             else:
                 fprs[user] = len(dis_like) / len(user_dislike)
-            tprs[user] = len(like) / len(user_like)
+            if len(user_like) ==0:
+                tprs[user] = 0
+            else:
+                tprs[user] = len(like) / len(user_like)
 
         th_fprs[i] = fprs.mean()
         th_tprs[i] = tprs.mean()
